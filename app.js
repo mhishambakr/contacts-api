@@ -1,16 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const routesV1 = require('./src/routes.v1');
-const { run } = require('./src/db/mongodb');
 const cors = require('cors');
+require('./src/db/mongodb/index')
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-
-run().catch(console.dir);
 
 global.__basedir = __dirname;
 
