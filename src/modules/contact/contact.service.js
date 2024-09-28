@@ -1,13 +1,16 @@
 
 const Contact = require('./contact.schema');
 
-exports.getContacts = async ({page, limit}) => {
+exports.getContacts = async ({ page, limit }) => {
     try {
         page = parseInt(page) || 1;
         limit = parseInt(limit) || 5;
         const skip = (page - 1) * limit;
 
-        return await Contact.find().skip(skip).limit(limit);
+        const contacts = await Contact.find().skip(skip).limit(limit);
+        const total = await Contact.countDocuments();
+
+        return { contacts, total };
     } catch (err) {
         throw err;
     }
@@ -27,7 +30,7 @@ exports.addContact = async (contact) => {
 exports.updateContact = async (contact) => {
     try {
         const existingContact = await Contact.findById(contact._id);
-        
+
         if (!existingContact) {
             throw {
                 status: 404,

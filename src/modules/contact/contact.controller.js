@@ -4,11 +4,11 @@ exports.getContactList = async (req, res) => {
     try {
         let { page, limit } = req.query;
 
-        const contacts = await getContacts({ page, limit });
+        const data = await getContacts({ page, limit });
         res.status(200).json({
             message: 'Contacts list fetched successfully.',
             data: {
-                contacts
+                ...data
             }
         })
     } catch (err) {
