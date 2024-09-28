@@ -57,7 +57,7 @@ exports.updateContact = async (req, res) => {
 
 exports.deleteContact = async (req,res) =>{
     try {
-        const {id: contactId} = req.query;
+        const {_id: contactId} = req.query;
 
         await deleteContact(contactId);
 

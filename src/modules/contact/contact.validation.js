@@ -9,14 +9,14 @@ exports.contactListSchema = joi.object({
 exports.contactCreateSchema = joi.object({
     name: joi.string()
         .min(5)
-        .max(15)
+        .max(25)
         .required(),
     phone: joi.string()
         .min(5)
         .max(15)
         .required(),
     address: joi.string().max(100).required(),
-    notes: joi.string().max(100),
+    notes: joi.string().allow('').max(100),
 })
 
 
@@ -24,14 +24,14 @@ exports.contactUpdateSchema = joi.object({
     _id: joi.string().hex().length(24),
     name: joi.string()
         .min(5)
-        .max(15)
+        .max(25)
         .required(),
     phone: joi.string()
         .min(5)
         .max(15)
         .required(),
     address: joi.string().max(100).required(),
-    notes: joi.string().max(100),
+    notes: joi.string().allow('').max(100),
 })
 
 exports.contactDeleteSchema = joi.object({

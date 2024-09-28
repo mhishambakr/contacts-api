@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('', validateContactList, getContactList);
 router.post('', validateContactCreate, addContact);
-router.patch('', validateContactUpdate, updateContact);
+router.put('', validateContactUpdate, updateContact);
 router.delete('', validateContactDeletion, deleteContact);
 
 module.exports = router;
